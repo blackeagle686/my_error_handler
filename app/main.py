@@ -14,6 +14,25 @@ app.mount("/static", StaticFiles(directory=static_dir), name="static")
 app.mount("/css", StaticFiles(directory=os.path.join(static_dir, "css")), name="css")
 app.mount("/js", StaticFiles(directory=os.path.join(static_dir, "js")), name="js")
 
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
+import logging
+
+# ... imports ...
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request, exc):
+    logging.error(f"Validation Error: {exc.errors()}")
+    try:
+        body = await request.json()
+        logging.error(f"Request Body: {body}")
+    except:
+        pass
+    return JSONResponse(
+        status_code=422,
+        content={"detail": exc.errors(), "body": str(exc.body)},
+    )
+
 # API Routes
 app.include_router(router, prefix="/api")
 
