@@ -6,5 +6,6 @@ pydantic
 pydantic-settings
 python-multipart
 numpy
-# lighter deps
 requests
+nest_asyncio
+pyngrok

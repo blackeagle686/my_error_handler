@@ -11,7 +11,11 @@ except ImportError:
     print("Installing dependencies...")
     os.system(f"{sys.executable} -m pip install nest_asyncio pyngrok uvicorn fastapi")
     import nest_asyncio
-    from pyngrok import ngrok, conf
+    import pyngrok
+
+# Import explicitly after ensuring installation
+from pyngrok import ngrok, conf
+import nest_asyncio
 
 import threading
 import uvicorn
