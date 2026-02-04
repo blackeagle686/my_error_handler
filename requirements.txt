@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+chromadb
+torch
+transformers
+accelerate
+pydantic
+python-multipart
+numpy
