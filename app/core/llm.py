@@ -49,7 +49,7 @@ class LLMService:
             inputs = self.tokenizer(prompt, return_tensors="pt").to(self.model.device)
             outputs = self.model.generate(
                 **inputs, 
-                max_new_tokens=512, 
+                max_new_tokens=1024, 
                 temperature=0.2,
                 top_p=0.9
             )
@@ -82,7 +82,7 @@ class LLMService:
             
             generated_ids = self.model.generate(
                 model_inputs.input_ids,
-                max_new_tokens=512,
+                max_new_tokens=1024,
                 temperature=0.4
             )
             generated_ids = [
