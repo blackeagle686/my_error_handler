@@ -1,6 +1,4 @@
 
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
 from app.core.config import settings
 import logging
 
@@ -24,12 +22,19 @@ class LLMService:
         else:
             logger.info(f"Initializing LLM Service with model: {settings.MODEL_PATH}")
             try:
+                # Lazy import to avoid hard dependency if using Mock mode only
+                import torch
+                from transformers import AutoModelForCausalLM, AutoTokenizer
+                
                 self.tokenizer = AutoTokenizer.from_pretrained(settings.MODEL_PATH)
                 self.model = AutoModelForCausalLM.from_pretrained(
                     settings.MODEL_PATH, 
                     torch_dtype=torch.float16, 
                     device_map="auto"
                 )
+            except ImportError:
+                logger.error("transformers or torch not installed. Falling back to Mock Mode.")
+                self.mock_mode = True
             except Exception as e:
                 logger.error(f"Failed to load model: {e}. Falling back to Mock Mode.")
                 self.mock_mode = True
@@ -49,8 +54,6 @@ class LLMService:
                 top_p=0.9
             )
             response = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-            # Extract only the AI's response part if necessary, depending on template
-            # For simplicity returning full response or stripping prompt might be needed
             return response.replace(prompt, "").strip()
         except Exception as e:
             logger.error(f"Error generating fix: {e}")
@@ -63,30 +66,34 @@ class LLMService:
         if self.mock_mode:
             return f"I am in Mock Mode. You said: {message}"
         
-        # Simple chat implementation for Qwen
-        messages = [{"role": "system", "content": "You are a helpful coding assistant."}]
-        for msg in history:
-            messages.append({"role": msg.get("role"), "content": msg.get("content")})
-        messages.append({"role": "user", "content": message})
-        
-        text = self.tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True
-        )
-        model_inputs = self.tokenizer([text], return_tensors="pt").to(self.model.device)
-        
-        generated_ids = self.model.generate(
-            model_inputs.input_ids,
-            max_new_tokens=512,
-            temperature=0.4
-        )
-        generated_ids = [
-            output_ids[len(input_ids):] for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)
-        ]
-        
-        response = self.tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
-        return response
+        try:
+            # Simple chat implementation for Qwen
+            messages = [{"role": "system", "content": "You are a helpful coding assistant."}]
+            for msg in history:
+                messages.append({"role": msg.get("role"), "content": msg.get("content")})
+            messages.append({"role": "user", "content": message})
+            
+            text = self.tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True
+            )
+            model_inputs = self.tokenizer([text], return_tensors="pt").to(self.model.device)
+            
+            generated_ids = self.model.generate(
+                model_inputs.input_ids,
+                max_new_tokens=512,
+                temperature=0.4
+            )
+            generated_ids = [
+                output_ids[len(input_ids):] for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)
+            ]
+            
+            response = self.tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
+            return response
+        except Exception as e:
+            logger.error(f"Error in chat generation: {e}")
+            return "Error generating response in LLM."
 
     def _build_prompt(self, code: str, error: str, context: str) -> str:
         return f"""
