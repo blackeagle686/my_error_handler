@@ -1,33 +1,34 @@
 /* ================= Root Theme ================= */
 :root {
     /* Backgrounds */
-    --bg-color: #280905;          /* main dark background */
-    --sidebar-bg: #740A03;        /* slightly lighter sidebar */
-    --header-bg: rgba(199, 17, 12, 0.6); /* semi-transparent red */
-    --footer-bg: rgba(40, 9, 5, 0.6);    /* semi-transparent dark red */
+    --bg-color: #1D1616;           /* main dark background */
+    --sidebar-bg: #8E1616;         /* slightly lighter sidebar */
+    --header-bg: rgba(216, 64, 64, 0.6); /* semi-transparent red */
+    --footer-bg: rgba(29, 22, 22, 0.6);  /* semi-transparent dark bg */
 
     /* Text colors */
-    --text-color: #E6501B;        /* bright text for contrast */
-    --ai-msg-text: #E6501B;       /* AI messages same accent */
-    
+    --text-color: #EEEEEE;         /* light text for contrast */
+    --ai-msg-text: #EEEEEE;        /* AI messages text */
+
     /* Accent colors */
-    --accent-color: #E6501B;      /* buttons, highlights */
-    --secondary-color: #C3110C;   /* secondary elements */
+    --accent-color: #D84040;       /* buttons, highlights */
+    --secondary-color: #8E1616;    /* secondary elements */
 
     /* Code and output backgrounds */
-    --code-bg: #740A03;            /* dark red for code blocks */
-    --output-bg: #C3110C;          /* lighter red for outputs */
+    --code-bg: #8E1616;            /* dark red for code blocks */
+    --output-bg: #D84040;          /* red for outputs */
 
     /* Borders */
     --border-color: rgba(255, 255, 255, 0.08);
 
     /* Messages */
-    --user-msg-bg: linear-gradient(135deg, #E6501B, #C3110C); /* gradient for user */
-    --user-msg-text: #ffffff;
+    --user-msg-bg: linear-gradient(135deg, #D84040, #8E1616); /* user message gradient */
+    --user-msg-text: #EEEEEE;
 
-    --ai-msg-bg: rgba(199, 17, 12, 0.1);  /* subtle AI message bg */
+    --ai-msg-bg: rgba(216, 64, 64, 0.1);  /* subtle AI msg background */
     --ai-msg-border: rgba(255, 255, 255, 0.1);
 }
+
 
 [data-theme="light"] {
     --bg-color: #f0f7f6;
