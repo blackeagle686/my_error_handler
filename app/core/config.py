@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     VERSION: str = "1.0.0"
     
     # LLM Settings
-    USE_MOCK_LLM: bool = os.getenv("USE_MOCK_LLM", "True").lower() == "true"
+    USE_MOCK_LLM: bool = os.getenv("USE_MOCK_LLM", "False").lower() == "true"
     MODEL_PATH: str = os.getenv("MODEL_PATH", "Qwen/Qwen2.5-Coder-1.5B-Instruct")
     
     # Vector DB

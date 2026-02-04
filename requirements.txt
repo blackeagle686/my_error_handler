@@ -9,3 +9,7 @@ numpy
 requests
 nest_asyncio
 pyngrok
+# LLM Dependencies
+torch
+transformers
+accelerate
