@@ -3,6 +3,7 @@ fastapi
 uvicorn
 chromadb
 pydantic
+pydantic-settings
 python-multipart
 numpy
 # lighter deps
