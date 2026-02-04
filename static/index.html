@@ -1,10 +1,10 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Coder Assistant</title>
+    <title>AI Error Handler</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,8 +38,8 @@
         <nav class="navbar navbar-expand-lg border-bottom">
             <div class="container-fluid">
                 <div class="d-flex align-items-center gap-2">
-                    <i class="bi bi-cpu fs-4" style="color: var(--accent-color);"></i>
-                    <span class="navbar-brand mb-0">My Coder</span>
+                    <i class="bi bi-bug-fill fs-4" style="color: var(--accent-color);"></i>
+                    <span class="navbar-brand mb-0">My Error Handler</span>
                 </div>
 
                 <div class="d-flex align-items-center gap-2">
@@ -64,37 +64,42 @@
                 <div id="chat-container" class="chat-messages flex-grow-1">
 
                     <!-- Welcome Hero Section -->
-                    <div id="welcome-hero" style="padding:2vw;" class="p-5 welcome-section d-flex flex-column align-items-center justify-content-center text-center p-5">
-                        
+                    <div id="welcome-hero" style="padding:2vw;"
+                        class="p-5 welcome-section d-flex flex-column align-items-center justify-content-center text-center p-5">
+
                         <!-- Hero Icon -->
                         <div class="hero-icon mb-4">
-                            <i class="bi bi-rocket-takeoff-fill display-1 text-accent animate-float"></i>
+                            <i class="bi bi-bug-fill display-1 text-accent animate-float"></i>
                         </div>
 
                         <!-- Main Title -->
-                        <h1 class="display-4 fw-bold mb-3">Level Up Your Coding with <span class="text-accent">My Coder</span></h1>
+                        <h1 class="display-4 fw-bold mb-3">Fix Python Bugs Instantly with <span class="text-accent">My
+                                Error Handler</span></h1>
 
                         <!-- Subtitle -->
                         <p class="lead text-muted mb-5" style="max-width: 600px;">
-                            A smart, secure, and fast coding assistant powered by Qwen-Coder. Write, run, and improve Python code safely in real-time.
+                            A smart, secure AI assistant that analyzes runtime errors, visualizes stack traces, and
+                            suggests safe fixes in seconds.
                         </p>
 
                         <!-- Features -->
                         <div class="row g-4 w-100 justify-content-center" style="max-width: 900px;">
-                            
+
                             <div class="col-md-4">
                                 <div class="feature-card glass-effect p-4 h-100">
                                     <i class="bi bi-shield-check fs-2 text-success mb-3 d-block"></i>
                                     <h5>Safe Sandbox</h5>
-                                    <p class="small text-muted mb-0">Execute Python code securely with resource limits and protection.</p>
+                                    <p class="small text-muted mb-0">Execute fixes securely with resource limits and
+                                        AST-based restricted environment.</p>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="feature-card glass-effect p-4 h-100">
-                                    <i class="bi bi-lightning-charge-fill fs-2 text-warning mb-3 d-block"></i>
-                                    <h5>Fast & Responsive</h5>
-                                    <p class="small text-muted mb-0">Optimized Qwen-Coder model delivers quick code suggestions and solutions.</p>
+                                    <i class="bi bi-cpu-fill fs-2 text-warning mb-3 d-block"></i>
+                                    <h5>Smart Analysis</h5>
+                                    <p class="small text-muted mb-0">AI identifies root causes from stack traces and
+                                        provides concrete fixes.</p>
                                 </div>
                             </div>
 
@@ -102,7 +107,8 @@
                                 <div class="feature-card glass-effect p-4 h-100">
                                     <i class="bi bi-window-sidebar fs-2 text-info mb-3 d-block"></i>
                                     <h5>VS Code Experience</h5>
-                                    <p class="small text-muted mb-0">Full-featured Monaco Editor with syntax highlight and autocomplete.</p>
+                                    <p class="small text-muted mb-0">Full-featured Monaco Editor with syntax highlight
+                                        and autocomplete.</p>
                                 </div>
                             </div>
 
@@ -111,9 +117,12 @@
                         <!-- Suggestions / Call to Action -->
                         <div class="mt-5 d-flex gap-3 flex-wrap justify-content-center">
                             <span class="text-muted small w-100 mb-2">Try asking:</span>
-                            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3 suggestion-chip">"Create a Python class for a library"</button>
-                            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3 suggestion-chip">"Explain list comprehensions"</button>
-                            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3 suggestion-chip">"How to use abstraction in Python?"</button>
+                            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3 suggestion-chip">"Fix this
+                                IndexError: list index out of range"</button>
+                            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3 suggestion-chip">"Why am I
+                                getting ModuleNotFoundError?"</button>
+                            <button class="btn btn-outline-secondary btn-sm rounded-pill px-3 suggestion-chip">"Analyze
+                                this stack trace"</button>
                         </div>
 
                     </div>
@@ -147,9 +156,9 @@
                             </button>
                         </div>
                         <div id="monaco-editor" class="flex-grow-1 border rounded"
-                        style="min-height: 400px; background: #1e1e1e;"></div>
+                            style="min-height: 400px; background: #1e1e1e;"></div>
                     </div>
-                    
+
 
                     <!-- Output Part (Bottom of Sidebar) -->
                     <div class="output-section" style="height: 35%;">
