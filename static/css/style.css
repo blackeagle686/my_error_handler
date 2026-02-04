@@ -1,26 +1,32 @@
 /* ================= Root Theme ================= */
 :root {
-    --bg-color: #2B2E4A;
-    --sidebar-bg: #53354A;
-    --text-color: #e6e6eb;
-    --accent-color: #E84545;
-    --secondary-color: #903749;
+    /* Backgrounds */
+    --bg-color: #0D1A63;          /* dark main background */
+    --sidebar-bg: #1A2CA3;        /* sidebar slightly lighter */
+    --header-bg: rgba(40, 69, 214, 0.6); /* semi-transparent light blue */
+    --footer-bg: rgba(13, 26, 99, 0.6);  /* semi-transparent dark blue */
 
-    --code-bg: #1e1e1e;
-    --output-bg: #1c1c24;
+    /* Text colors */
+    --text-color: #F68048;        /* bright orange for main text */
+    --ai-msg-text: #F68048;       /* AI message text same accent */
+    
+    /* Accent colors */
+    --accent-color: #F68048;      /* orange for highlights/buttons */
+    --secondary-color: #2845D6;   /* lighter blue for secondary elements */
 
+    /* Code and output backgrounds */
+    --code-bg: #1A2CA3;            /* blue for code blocks */
+    --output-bg: #2845D6;          /* lighter blue for outputs */
+
+    /* Borders */
     --border-color: rgba(255, 255, 255, 0.08);
 
-    --user-msg-bg: linear-gradient(135deg, #E84545, #c73838);
+    /* Messages */
+    --user-msg-bg: linear-gradient(135deg, #F68048, #2845D6); /* gradient for user */
     --user-msg-text: #ffffff;
 
-    --ai-msg-bg: rgba(255, 255, 255, 0.06);
-    --ai-msg-text: #e6e6eb;
-
+    --ai-msg-bg: rgba(40, 69, 214, 0.1);  /* subtle AI msg background */
     --ai-msg-border: rgba(255, 255, 255, 0.1);
-
-    --header-bg: rgba(83, 53, 74, 0.6);
-    --footer-bg: rgba(43, 46, 74, 0.6);
 }
 
 [data-theme="light"] {
